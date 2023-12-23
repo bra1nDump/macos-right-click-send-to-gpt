@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D2B3BE332B32CDDE0097C91D /* RightClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */; };
-		D2B3BE352B32CDDE0097C91D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3BE342B32CDDE0097C91D /* ContentView.swift */; };
 		D2B3BE372B32CDDF0097C91D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B3BE362B32CDDF0097C91D /* Assets.xcassets */; };
 		D2B3BE3A2B32CDDF0097C91D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B3BE392B32CDDF0097C91D /* Preview Assets.xcassets */; };
 		D2B3BE452B32CDDF0097C91D /* RightClickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3BE442B32CDDF0097C91D /* RightClickTests.swift */; };
@@ -34,9 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20BC2FE2B368B5600EA9E48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D2B3BE2F2B32CDDE0097C91D /* RightClick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightClick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightClickApp.swift; sourceTree = "<group>"; };
-		D2B3BE342B32CDDE0097C91D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2B3BE362B32CDDF0097C91D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2B3BE392B32CDDF0097C91D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D2B3BE3B2B32CDDF0097C91D /* RightClick.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RightClick.entitlements; sourceTree = "<group>"; };
@@ -95,8 +94,8 @@
 		D2B3BE312B32CDDE0097C91D /* RightClick */ = {
 			isa = PBXGroup;
 			children = (
+				D20BC2FE2B368B5600EA9E48 /* Info.plist */,
 				D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */,
-				D2B3BE342B32CDDE0097C91D /* ContentView.swift */,
 				D2B3BE362B32CDDF0097C91D /* Assets.xcassets */,
 				D2B3BE3B2B32CDDF0097C91D /* RightClick.entitlements */,
 				D2B3BE382B32CDDF0097C91D /* Preview Content */,
@@ -259,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B3BE352B32CDDE0097C91D /* ContentView.swift in Sources */,
 				D2B3BE332B32CDDE0097C91D /* RightClickApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +427,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RightClick/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -456,6 +455,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RightClick/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

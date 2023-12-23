@@ -2,9 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>com.apple.security.app-sandbox</key>
-	<true/>
-	<key>com.apple.security.automation.apple-events</key>
-	<true/>
+	<key>NSAccessibilityUsageDescription</key>
+	<string>We need accessibility permissions to detect right clicks globally and read selected text to send it to ChatGPT</string>
 </dict>
 </plist>
