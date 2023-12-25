@@ -1,4 +1,3 @@
-//
 //  RightClickApp.swift
 //  RightClick
 //
@@ -45,8 +44,11 @@ func getSelectedText(uiApp: Application) -> String? {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     static var shared: AppDelegate!
+    var popover: NSPopover?
     var statusBarItem: NSStatusItem?
     var contextMenu: NSMenu?
+    
+    var nonFocusingPanel: OverlayPanel!
 
     func eventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
         if [.rightMouseDown, .rightMouseUp].contains(CGEventType(rawValue: type.rawValue)!) {
@@ -65,6 +67,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         AppDelegate.shared = self
+
+        // Create the SwiftUI view that provides the window contents.
+        let contentView = CustomMenuView()
+
+        // Create the popover
+        let popover = NSPopover()
+        popover.behavior = .transient
+        popover.contentViewController = NSHostingController(rootView: contentView)
+        popover.contentSize = NSSize(width: 200, height: 200)
+
+        self.popover = popover
 
         // Create tap without accessibility - lets try
         
@@ -99,8 +112,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     
                     func recurseUntilWeFindAMenu(element: UIElement) {
                         // Use windows() on uiApp and next use arrayAttribute with .children on each window to get the children of each window. Then use .role on each child to see if it is a menu. If it is, then use .frame to get the coordinates of the menu. If it is not a menu, then use .children on that child to get its children and repeat the process.
-                        if (try? element.attribute<String>(.role) ?? nil) == "AXMenu" {
-//                            NSLog("role: \(String(describing: role))")
+                        if let role: String = try? element.attribute(.role),
+                           role == "AXMenu" {
+                            NSLog("role: \(String(describing: role))")
                             
                             // Submenus have AXMenuItem children - ignore them :D
                             // Actually - just return once we found a menu :D
@@ -129,7 +143,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                     }
                                     
                                     // Dismisses the current menu :(
-                                    self.contextMenu?.popUp(positioning: nil, at: menuPosition.origin, in: nil)
+                                    // Show the popover
+//                                    self.popover?.show(relativeTo: menuPosition, of: nil, preferredEdge: .maxY)
+                                    
+                                    DispatchQueue.main.async {
+                                        print("panel")
+                                        self.nonFocusingPanel = OverlayPanel(contentRect: menuPosition.offsetBy(dx: -100, dy: -100))
+                                    }
                                 }
                                 
                                 return
@@ -247,3 +267,72 @@ func staticEventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CG
     return AppDelegate.shared.eventTapCallback(proxy: proxy, type: type, event: event, refcon: refcon)
 }
 
+struct CustomMenuView: View {
+    var body: some View {
+        VStack {
+            Button("Hello World") {
+                print("LOOOOOOO>")
+            }
+                .padding()
+        }
+        .cornerRadius(10)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.gray.opacity(0.2))
+    }
+}
+
+/////// COPIED OVER FROM CAPTURE EXAMPLE
+// This class took me 2 days to get somewhat right - the flags are obviously very important.
+//
+// It accomplishes the following behavior:
+// - From anywhere I will be able to use a keyboard shortcut to create a overlay over my entire screen
+// - It will block interactions with existing applications while the user is selecting the range to screenshot
+// - We will use this overly to draw the cursor and the selection rectangle (delegated to the
+//
+// The tricky parts:
+// - We want the application not to take focus, so everything else on screen remains exacly the same
+// - It allows to get keyboard events
+//
+// Most of this was eye balled and copied from pixel picker / Maccy projects
+class OverlayPanel: NSPanel {
+    override var canBecomeKey: Bool {
+        // lets try to prevent dismissing menu
+        get { return false }
+    }
+    var screenshotPreview: NSImageView?
+    // Initializer for OverlayPanel
+    init(contentRect: NSRect) {
+        // Style mask passed here is key! Changing it later will not have the same effect!
+        super.init(contentRect: contentRect, styleMask: .nonactivatingPanel, backing: .buffered, defer: true)
+
+        // Not quite sure what it does, sounds like it makes this float over other models
+        self.isFloatingPanel = true
+        
+        // How does the window behave across collections (I assume this means ctrl + up, spaces managment)
+        // We might need to further update the styleMask above to get the right combination, but good enough for now
+        self.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .fullScreenAuxiliary]
+
+        // Special behavior for models
+        self.worksWhenModal = true
+
+        // Track the mouse
+        self.acceptsMouseMovedEvents = true
+        self.ignoresMouseEvents = false
+        self.backgroundColor = .blue.withAlphaComponent(0.4)
+        
+        let nsHostingContentView = NSHostingView(rootView: CustomMenuView())
+        self.contentView = nsHostingContentView
+        
+        // Additional window setup
+//        makeKeyAndOrderFront(self)
+        // TRY
+        
+        orderFront(self)
+    }
+
+    private func cleanupAndClose() {
+        // To make sure its removed - the swiftUI view still seems to remain in memory - strange
+        self.contentView = nil
+        self.close()
+    }
+}
