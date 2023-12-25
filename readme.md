@@ -119,3 +119,9 @@ Alternatively we could use global monitor + screen record for right click right?
 
 # Unknowns
 - How to find where the menu is displayd? - We probably want to show our menu right above the default menu
+
+# References
+
+- Accessibility during development https://stackoverflow.com/questions/72312351/persist-accessibility-permissions-between-builds-in-xcode-13
+- Unable to add app to accessibility apps with sandbox enabled https://developer.apple.com/forums/thread/707680
+- Cannot distribute on AppStore non-sandboxed app :( https://developer.apple.com/forums/thread/693312

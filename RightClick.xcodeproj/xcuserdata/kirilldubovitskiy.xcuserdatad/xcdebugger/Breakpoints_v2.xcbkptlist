@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "58EED3E7-619F-43A7-9535-4822CC2B72FC"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47A6D039-4369-41E7-AC43-29A650E37F91"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RightClick/GetSelectedText.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "getSelection()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1A15DAA-ED2C-4268-BF1A-5B7833DA5D74"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RightClick/GetSelectedText.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "_getFocusedElement(pid:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D387E4D9-D3F7-4826-808B-D7B615E91C4D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RightClick/GetSelectedText.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "_getFocusedElement(pid:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "D387E4D9-D3F7-4826-808B-D7B615E91C4D - 1614cfceccfd27cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_getFocusedElement(pid: Swift.Int32) -&gt; Swift.Optional&lt;__C.AXUIElementRef&gt;"
+                  moduleName = "RightClick"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kirilldubovitskiy/projects/macos-right-click-send-to-gpt/RightClick/GetSelectedText.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "832">
+               </Location>
+               <Location
+                  uuid = "D387E4D9-D3F7-4826-808B-D7B615E91C4D - 1614cfceccfd2324"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_getFocusedElement(pid: Swift.Int32) -&gt; Swift.Optional&lt;__C.AXUIElementRef&gt;"
+                  moduleName = "RightClick"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kirilldubovitskiy/projects/macos-right-click-send-to-gpt/RightClick/GetSelectedText.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "828">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C1E75DDA-0F99-4E84-904A-9B1001FCE7AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RightClick/GetSelectedText.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "printElementInfo(_:depth:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
