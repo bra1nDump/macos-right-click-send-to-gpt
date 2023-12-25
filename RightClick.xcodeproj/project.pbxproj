@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D20BC3002B36F63F00EA9E48 /* GetSelectedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20BC2FF2B36F63F00EA9E48 /* GetSelectedText.swift */; };
 		D20BC3032B391B2400EA9E48 /* AXSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D20BC3022B391B2400EA9E48 /* AXSwift */; };
-		D22CBE5E2B39455F00C6B2B8 /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = D22CBE5D2B39455F00C6B2B8 /* Vapor */; };
 		D22CBE602B39467000C6B2B8 /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE5F2B39467000C6B2B8 /* SocketServer.swift */; };
 		D22CBE622B394CD500C6B2B8 /* LowLevelSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE612B394CD500C6B2B8 /* LowLevelSocketServer.swift */; };
 		D22CBE642B394EA000C6B2B8 /* NetworkFrameworkBasedWebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE632B394EA000C6B2B8 /* NetworkFrameworkBasedWebSocketServer.swift */; };
@@ -62,7 +61,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D20BC3032B391B2400EA9E48 /* AXSwift in Frameworks */,
-				D22CBE5E2B39455F00C6B2B8 /* Vapor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +160,6 @@
 			name = RightClick;
 			packageProductDependencies = (
 				D20BC3022B391B2400EA9E48 /* AXSwift */,
-				D22CBE5D2B39455F00C6B2B8 /* Vapor */,
 			);
 			productName = RightClick;
 			productReference = D2B3BE2F2B32CDDE0097C91D /* RightClick.app */;
@@ -238,7 +235,6 @@
 			mainGroup = D2B3BE262B32CDDE0097C91D;
 			packageReferences = (
 				D20BC3012B391B2400EA9E48 /* XCRemoteSwiftPackageReference "AXSwift" */,
-				D22CBE5C2B39436600C6B2B8 /* XCRemoteSwiftPackageReference "vapor" */,
 			);
 			productRefGroup = D2B3BE302B32CDDE0097C91D /* Products */;
 			projectDirPath = "";
@@ -625,14 +621,6 @@
 				minimumVersion = 0.3.2;
 			};
 		};
-		D22CBE5C2B39436600C6B2B8 /* XCRemoteSwiftPackageReference "vapor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vapor/vapor.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.89.3;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -640,11 +628,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D20BC3012B391B2400EA9E48 /* XCRemoteSwiftPackageReference "AXSwift" */;
 			productName = AXSwift;
-		};
-		D22CBE5D2B39455F00C6B2B8 /* Vapor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D22CBE5C2B39436600C6B2B8 /* XCRemoteSwiftPackageReference "vapor" */;
-			productName = Vapor;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

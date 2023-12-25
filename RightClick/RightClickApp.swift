@@ -22,6 +22,9 @@ struct RightClickApp {
 }
 
 func getSelectedText(uiApp: Application) -> String? {
+    
+    // TODO: Check if this is even needed? I think getting selection should be totally fine
+    
     // The Swifty API does not expose these attributes
     AXUIElementSetAttributeValue(uiApp.element, "AXManualAccessibility" as CFString, kCFBooleanTrue)
     AXUIElementSetAttributeValue(uiApp.element, "AXEnhancedUserInterface" as CFString, kCFBooleanTrue)
