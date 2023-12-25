@@ -67,17 +67,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         AppDelegate.shared = self
-
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = CustomMenuView()
-
-        // Create the popover
-        let popover = NSPopover()
-        popover.behavior = .transient
-        popover.contentViewController = NSHostingController(rootView: contentView)
-        popover.contentSize = NSSize(width: 200, height: 200)
-
-        self.popover = popover
+        
+        // Start vapor and get back a way to send to clients
+//        let sendToChrome = startVapor()
+        let sendToChrome = NetworkBasedWebSocketServer().start()
 
         // Create tap without accessibility - lets try
         
@@ -146,9 +139,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                     // Show the popover
 //                                    self.popover?.show(relativeTo: menuPosition, of: nil, preferredEdge: .maxY)
                                     
+                                    
                                     DispatchQueue.main.async {
                                         print("panel")
-                                        self.nonFocusingPanel = OverlayPanel(contentRect: menuPosition.offsetBy(dx: -100, dy: -100))
+                                        // The presentation needs to be from both a right click + menu, not just menu
+                                        self.nonFocusingPanel = OverlayPanel(contentRect: menuPosition.offsetBy(dx: -100, dy: -100), sendToChrome: sendToChrome)
                                     }
                                 }
                                 
@@ -199,35 +194,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //   This might not be available without enabling explicitly. The copy to clipboard does not suffer the same problem
     // When I toggle 'Speak Selection' in system settings and refresh chrome 
     // https://chromium.googlesource.com/chromium/src/+/main/docs/accessibility/overview.md
-    func getSelectedText() -> String? {
-        // Get the system-wide accessibility element
-        let systemWideElement = AXUIElementCreateSystemWide()
 
-        // Get the current focused element
-        var focusedElement: AnyObject?
-        let error = AXUIElementCopyAttributeValue(systemWideElement, kAXFocusedUIElementAttribute as CFString, &focusedElement)
-
-        /** Fails with:
-            case cannotComplete = -25204
-
-            The function cannot complete because messaging failed in some way or because the application with which the function is communicating is busy or unresponsive. 
-        */
-        guard error == .success else {
-            print("Could not get focused element \(error)")
-            return nil
-        }
-
-        // Get the selected text from the focused element
-        var selectedText: AnyObject?
-        let error2 = AXUIElementCopyAttributeValue(focusedElement as! AXUIElement, kAXSelectedTextAttribute as CFString, &selectedText)
-
-        guard error2 == .success else {
-            print("Could not get selected text")
-            return nil
-        }
-
-        return selectedText as? String
-    }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
@@ -268,10 +235,17 @@ func staticEventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CG
 }
 
 struct CustomMenuView: View {
+    let sendToChrome: (String) -> Void
+    
     var body: some View {
         VStack {
             Button("Hello World") {
                 print("LOOOOOOO>")
+                
+                if let selection = getSelectedText() {
+                    // Send to our connection
+                    sendToChrome(selection)
+                }
             }
                 .padding()
         }
@@ -301,7 +275,7 @@ class OverlayPanel: NSPanel {
     }
     var screenshotPreview: NSImageView?
     // Initializer for OverlayPanel
-    init(contentRect: NSRect) {
+    init(contentRect: NSRect, sendToChrome: @escaping (String) -> Void) {
         // Style mask passed here is key! Changing it later will not have the same effect!
         super.init(contentRect: contentRect, styleMask: .nonactivatingPanel, backing: .buffered, defer: true)
 
@@ -320,7 +294,7 @@ class OverlayPanel: NSPanel {
         self.ignoresMouseEvents = false
         self.backgroundColor = .blue.withAlphaComponent(0.4)
         
-        let nsHostingContentView = NSHostingView(rootView: CustomMenuView())
+        let nsHostingContentView = NSHostingView(rootView: CustomMenuView(sendToChrome: sendToChrome))
         self.contentView = nsHostingContentView
         
         // Additional window setup
@@ -335,4 +309,36 @@ class OverlayPanel: NSPanel {
         self.contentView = nil
         self.close()
     }
+}
+
+
+/// UNUSED
+func getSelectedText() -> String? {
+    // Get the system-wide accessibility element
+    let systemWideElement = AXUIElementCreateSystemWide()
+
+    // Get the current focused element
+    var focusedElement: AnyObject?
+    let error = AXUIElementCopyAttributeValue(systemWideElement, kAXFocusedUIElementAttribute as CFString, &focusedElement)
+
+    /** Fails with:
+        case cannotComplete = -25204
+
+        The function cannot complete because messaging failed in some way or because the application with which the function is communicating is busy or unresponsive.
+    */
+    guard error == .success else {
+        print("Could not get focused element \(error)")
+        return nil
+    }
+
+    // Get the selected text from the focused element
+    var selectedText: AnyObject?
+    let error2 = AXUIElementCopyAttributeValue(focusedElement as! AXUIElement, kAXSelectedTextAttribute as CFString, &selectedText)
+
+    guard error2 == .success else {
+        print("Could not get selected text")
+        return nil
+    }
+
+    return selectedText as? String
 }
