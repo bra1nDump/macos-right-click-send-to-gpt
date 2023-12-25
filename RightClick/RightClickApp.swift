@@ -73,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Start vapor and get back a way to send to clients
 //        let sendToChrome = startVapor()
-        let sendToChrome = NetworkBasedWebSocketServer().start()
+        let sendToChrome = NetworkBasedWebSocketServer().sendToCurrentConnection
 
         // Create tap without accessibility - lets try
         
@@ -238,7 +238,7 @@ func staticEventTapCallback(proxy: CGEventTapProxy, type: CGEventType, event: CG
 }
 
 struct CustomMenuView: View {
-    let sendToChrome: (String) -> Void
+    let sendToChrome: (String) async -> Bool
     
     var body: some View {
         VStack {
@@ -247,7 +247,9 @@ struct CustomMenuView: View {
                 
                 if let selection = getSelectedText() {
                     // Send to our connection
-                    sendToChrome(selection)
+                    Task {
+                        await sendToChrome(selection)
+                    }
                 }
             }
                 .padding()
@@ -278,7 +280,7 @@ class OverlayPanel: NSPanel {
     }
     var screenshotPreview: NSImageView?
     // Initializer for OverlayPanel
-    init(contentRect: NSRect, sendToChrome: @escaping (String) -> Void) {
+    init(contentRect: NSRect, sendToChrome: @escaping (String) async -> Bool) {
         // Style mask passed here is key! Changing it later will not have the same effect!
         super.init(contentRect: contentRect, styleMask: .nonactivatingPanel, backing: .buffered, defer: true)
 

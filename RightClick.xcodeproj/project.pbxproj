@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		D20BC3002B36F63F00EA9E48 /* GetSelectedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20BC2FF2B36F63F00EA9E48 /* GetSelectedText.swift */; };
 		D20BC3032B391B2400EA9E48 /* AXSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D20BC3022B391B2400EA9E48 /* AXSwift */; };
-		D22CBE602B39467000C6B2B8 /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE5F2B39467000C6B2B8 /* SocketServer.swift */; };
-		D22CBE622B394CD500C6B2B8 /* LowLevelSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE612B394CD500C6B2B8 /* LowLevelSocketServer.swift */; };
-		D22CBE642B394EA000C6B2B8 /* NetworkFrameworkBasedWebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE632B394EA000C6B2B8 /* NetworkFrameworkBasedWebSocketServer.swift */; };
+		D22CBE642B394EA000C6B2B8 /* WebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE632B394EA000C6B2B8 /* WebSocketServer.swift */; };
 		D2B3BE332B32CDDE0097C91D /* RightClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */; };
 		D2B3BE372B32CDDF0097C91D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B3BE362B32CDDF0097C91D /* Assets.xcassets */; };
 		D2B3BE3A2B32CDDF0097C91D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B3BE392B32CDDF0097C91D /* Preview Assets.xcassets */; };
@@ -40,9 +38,7 @@
 /* Begin PBXFileReference section */
 		D20BC2FE2B368B5600EA9E48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D20BC2FF2B36F63F00EA9E48 /* GetSelectedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSelectedText.swift; sourceTree = "<group>"; };
-		D22CBE5F2B39467000C6B2B8 /* SocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketServer.swift; sourceTree = "<group>"; };
-		D22CBE612B394CD500C6B2B8 /* LowLevelSocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowLevelSocketServer.swift; sourceTree = "<group>"; };
-		D22CBE632B394EA000C6B2B8 /* NetworkFrameworkBasedWebSocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFrameworkBasedWebSocketServer.swift; sourceTree = "<group>"; };
+		D22CBE632B394EA000C6B2B8 /* WebSocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketServer.swift; sourceTree = "<group>"; };
 		D2B3BE2F2B32CDDE0097C91D /* RightClick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightClick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightClickApp.swift; sourceTree = "<group>"; };
 		D2B3BE362B32CDDF0097C91D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,9 +102,7 @@
 			children = (
 				D20BC2FE2B368B5600EA9E48 /* Info.plist */,
 				D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */,
-				D22CBE5F2B39467000C6B2B8 /* SocketServer.swift */,
-				D22CBE612B394CD500C6B2B8 /* LowLevelSocketServer.swift */,
-				D22CBE632B394EA000C6B2B8 /* NetworkFrameworkBasedWebSocketServer.swift */,
+				D22CBE632B394EA000C6B2B8 /* WebSocketServer.swift */,
 				D20BC2FF2B36F63F00EA9E48 /* GetSelectedText.swift */,
 				D2B3BE362B32CDDF0097C91D /* Assets.xcassets */,
 				D2B3BE3B2B32CDDF0097C91D /* RightClick.entitlements */,
@@ -278,11 +272,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D22CBE602B39467000C6B2B8 /* SocketServer.swift in Sources */,
 				D20BC3002B36F63F00EA9E48 /* GetSelectedText.swift in Sources */,
 				D2B3BE332B32CDDE0097C91D /* RightClickApp.swift in Sources */,
-				D22CBE642B394EA000C6B2B8 /* NetworkFrameworkBasedWebSocketServer.swift in Sources */,
-				D22CBE622B394CD500C6B2B8 /* LowLevelSocketServer.swift in Sources */,
+				D22CBE642B394EA000C6B2B8 /* WebSocketServer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
