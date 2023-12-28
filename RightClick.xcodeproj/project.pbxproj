@@ -10,6 +10,9 @@
 		D20BC3002B36F63F00EA9E48 /* GetSelectedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20BC2FF2B36F63F00EA9E48 /* GetSelectedText.swift */; };
 		D20BC3032B391B2400EA9E48 /* AXSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D20BC3022B391B2400EA9E48 /* AXSwift */; };
 		D22CBE642B394EA000C6B2B8 /* WebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE632B394EA000C6B2B8 /* WebSocketServer.swift */; };
+		D22CBE662B3D205200C6B2B8 /* OverlayPanelWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE652B3D205200C6B2B8 /* OverlayPanelWindow.swift */; };
+		D22CBE682B3D20D300C6B2B8 /* RightClickExtraMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE672B3D20D300C6B2B8 /* RightClickExtraMenuView.swift */; };
+		D22CBE6A2B3D2FC300C6B2B8 /* AccessibilityHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22CBE692B3D2FC300C6B2B8 /* AccessibilityHelpers.swift */; };
 		D2B3BE332B32CDDE0097C91D /* RightClickApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */; };
 		D2B3BE372B32CDDF0097C91D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B3BE362B32CDDF0097C91D /* Assets.xcassets */; };
 		D2B3BE3A2B32CDDF0097C91D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B3BE392B32CDDF0097C91D /* Preview Assets.xcassets */; };
@@ -39,6 +42,9 @@
 		D20BC2FE2B368B5600EA9E48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D20BC2FF2B36F63F00EA9E48 /* GetSelectedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSelectedText.swift; sourceTree = "<group>"; };
 		D22CBE632B394EA000C6B2B8 /* WebSocketServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketServer.swift; sourceTree = "<group>"; };
+		D22CBE652B3D205200C6B2B8 /* OverlayPanelWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPanelWindow.swift; sourceTree = "<group>"; };
+		D22CBE672B3D20D300C6B2B8 /* RightClickExtraMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightClickExtraMenuView.swift; sourceTree = "<group>"; };
+		D22CBE692B3D2FC300C6B2B8 /* AccessibilityHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityHelpers.swift; sourceTree = "<group>"; };
 		D2B3BE2F2B32CDDE0097C91D /* RightClick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RightClick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightClickApp.swift; sourceTree = "<group>"; };
 		D2B3BE362B32CDDF0097C91D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +109,9 @@
 				D20BC2FE2B368B5600EA9E48 /* Info.plist */,
 				D2B3BE322B32CDDE0097C91D /* RightClickApp.swift */,
 				D22CBE632B394EA000C6B2B8 /* WebSocketServer.swift */,
+				D22CBE652B3D205200C6B2B8 /* OverlayPanelWindow.swift */,
+				D22CBE672B3D20D300C6B2B8 /* RightClickExtraMenuView.swift */,
+				D22CBE692B3D2FC300C6B2B8 /* AccessibilityHelpers.swift */,
 				D20BC2FF2B36F63F00EA9E48 /* GetSelectedText.swift */,
 				D2B3BE362B32CDDF0097C91D /* Assets.xcassets */,
 				D2B3BE3B2B32CDDF0097C91D /* RightClick.entitlements */,
@@ -273,7 +282,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D20BC3002B36F63F00EA9E48 /* GetSelectedText.swift in Sources */,
+				D22CBE662B3D205200C6B2B8 /* OverlayPanelWindow.swift in Sources */,
+				D22CBE6A2B3D2FC300C6B2B8 /* AccessibilityHelpers.swift in Sources */,
 				D2B3BE332B32CDDE0097C91D /* RightClickApp.swift in Sources */,
+				D22CBE682B3D20D300C6B2B8 /* RightClickExtraMenuView.swift in Sources */,
 				D22CBE642B394EA000C6B2B8 /* WebSocketServer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

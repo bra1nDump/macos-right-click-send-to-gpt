@@ -1,3 +1,42 @@
+# Control flow
+
+## On startup
+- Add to startup items
+- Create global right click event tap
+    - This uses low level APIs to listen to right click events globally
+- Create keyboard shortcuts
+    - Cmd ; - append to chatgpt
+    - Cmd shift ; - send to chatgpt
+
+## Once a right click is detected:
+- Get the selected text
+- Get the coordinates of the currently active 3d party app menu
+    - (within 300ms of the click)
+    - get all windows for the active application and recurse until we find the menu
+- Show the non focusing panel mimicking an NSMenu above the system menu with two buttons
+    - Append to chatgpt
+    - Send to chatgpt and focus
+- Once the user clicks on the panel
+    - Send the selected text to the chrome extension
+    - System menu will automatically lose focus and close
+    - Many we dismiss our panel
+- If the user presses escape
+    - System menu will automatically lose focus and close
+    - Dismiss the panel
+
+# Accessibility
+
+https://github.com/tmandry/AXSwift/tree/main
+https://github.com/lujjjh/node-selection
+  Chrome does not work, neither does VSCode
+  Setings chrome://accessibility/
+  They are on
+  Speak seleciton is on - it can pick up selection from both chrome and vscode
+  Alternatively I can use copy to extract the text and restore clipboard later
+  This might not be available without enabling explicitly. The copy to clipboard does not suffer the same problem
+When I toggle 'Speak Selection' in system settings and refresh chrome 
+https://chromium.googlesource.com/chromium/src/+/main/docs/accessibility/overview.md
+
 
 Found potentially related mac application that adds context menu items to finder on right click.
 https://github.com/samiyuru/custom-finder-right-click-menu/blob/master/FinderMenuItems/RightClickActions.swift
