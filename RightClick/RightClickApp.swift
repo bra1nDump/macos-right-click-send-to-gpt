@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func onRightClickUp(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutableRawPointer?) -> Unmanaged<CGEvent>? {
-        guard let selectedText = getSelectedText() else {
+        guard let selectedText = getSelectedTextWidthSystemWideElement() else {
             print("No selected text, it doesn't make sense to show the menu")
             return Unmanaged.passRetained(event)
         }

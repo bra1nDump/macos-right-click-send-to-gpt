@@ -3,11 +3,17 @@ The application is a macOS app that adds a context menu item 'Send to ChatGPT' w
 
 # Critical
 - [Done] Release chrome extension
-- Add vscode base build
-- Listen for escape key to close the window (steel from share shot)
-- Actually build the UI for the menu
+- [Done] Add vscode base build
+- [Done] Listen for escape key to close the window (steel from share shot)
+- [Done] Actually build the UI for the menu
+- Fixup the UI
+  - Layout
+  - Handle both dark and light mode
+  - Add many item so people can kill the app
+- Handle the menu disappearing for any other reason other than escape - like clicking outside
+  - I can try subscribing to global window changes if there's an API for that
+  - Otherwise simply handle mouse clicks + and just in just poll every 100ms for menu disappearing
 - Add shortcut cmd ; and cmd shift ; to send to chatgpt
-- Final tweaks to make sure it works
 - Record a video of the thing
 - Publish
     - on Gumroad

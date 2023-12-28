@@ -38,31 +38,33 @@ func getFocusedMenuFrame() -> CGRect? {
     return nil
 }
 
-func getSelectedText() -> String? {
-    guard let uiApp = getActiveApplication() else {
-        print("no uiApp :), it could have been terminated or the process identifier is smaller than zero")
+/// Alternative way to get the selected text. I believe this actually works correctly unlike the previous code, that does not work for Chrome, vscode and some other web based apps.
+// TODO: Rewrite in terms of simpler code using AXSwift
+func getSelectedTextWidthSystemWideElement() -> String? {
+    // Get the system-wide accessibility element
+    let systemWideElement = AXUIElementCreateSystemWide()
+
+    // Get the current focused element
+    var focusedElement: AnyObject?
+    let error = AXUIElementCopyAttributeValue(systemWideElement, kAXFocusedUIElementAttribute as CFString, &focusedElement)
+
+    guard error == .success else {
+        print("Could not get focused element \(error)")
         return nil
     }
 
-    // TODO: Check if this is even needed? I think getting selection should be totally fine
-    // The Swifty API does not expose these attributes
-    AXUIElementSetAttributeValue(uiApp.element, "AXManualAccessibility" as CFString, kCFBooleanTrue)
-    AXUIElementSetAttributeValue(uiApp.element, "AXEnhancedUserInterface" as CFString, kCFBooleanTrue)
-    
-    // Get focused element
-    var focusedElement: UIElement?
-    focusedElement = try? uiApp.attribute(.focusedUIElement)
+    // Get the selected text from the focused element
+    var selectedText: AnyObject?
+    let error2 = AXUIElementCopyAttributeValue(focusedElement as! AXUIElement, kAXSelectedTextAttribute as CFString, &selectedText)
 
-    if (focusedElement == nil) {
-        focusedElement = try? uiApp.attribute(.focusedWindow)
+    guard error2 == .success else {
+        print("Could not get selected text")
+        return nil
     }
-    
-    if let selectedText: String = try? focusedElement?.attribute(.selectedText) {
-        return selectedText
-    }
-    
-    return nil
+
+    return selectedText as? String
 }
+
 
 fileprivate func getActiveApplication() -> Application? {
     guard let application = NSWorkspace.shared.frontmostApplication else {
