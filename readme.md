@@ -29,6 +29,7 @@ The application is a macOS app that adds a context menu item 'Send to ChatGPT' w
 - [interaction mode] [experiment] I extracting the response from ChatGPT without actually focusing on the browser
 
 - [feature] Simply allow sharing the selection using the native share menu. Oftentimes I just want to send a friend a quote from my own notes or from a website. Can already share from the website using the chrome highlight sharing feature, but you copy the link, not share the contents of your clipboard with someone
+- [feature] We can add more dev tools similar to https://devutils.com/ [$40 min pricing]
 
 - Add ability to focus on chatgpt as well, so send and focus
   - Maybe hold down alt as you click the button?
